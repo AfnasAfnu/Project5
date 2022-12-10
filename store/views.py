@@ -33,12 +33,12 @@ def Register(request):
             else:
                 user = User.objects.create_user(username=username, password=passw)
                 user.save();
-                return redirect('register') #after registration page redirect to login pg
-        #
-        # else:
-        #     messages.info(request,"password not matching")
-        #     return redirect('register')
-        # return redirect('/')
+                return redirect('login') #after registration page redirect to login pg
+
+        else:
+            messages.info(request,"password not matching")
+            return redirect('register')
+        return redirect('/')
     return render(request,'register.html')
 
 
