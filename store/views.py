@@ -2,7 +2,7 @@
 # Create your views here.
 
 
-from django.contrib import messages
+from django.contrib import messages, auth
 from django.contrib.auth.models import User
 
 from django.shortcuts import render, redirect, get_object_or_404
@@ -41,6 +41,20 @@ def Register(request):
         return redirect('/')
     return render(request,'register.html')
 
+def Login(request):
+
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user=auth.authenticate(username=username,password=password)
+
+        if user is not None:
+            auth.login(request, user)
+            return redirect("/")
+        else:
+            messages.info(request, "Invalid details")
+            return redirect('login')
+    return render(request, "login.html")
 
 
 
