@@ -8,6 +8,7 @@ from django.urls import path
 
 urlpatterns = [
     path('',views.content,name='content'),
+    path('Register', views.Register, name='register'),
     path('person/add/', views.gform_create, name='add'),
     path('person/<int:pk>/', views.update_person, name='change'),
     path('person/ajax/update_course/', views.update_course, name='ajax_update_course'),  # AJAX

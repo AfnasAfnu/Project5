@@ -18,6 +18,29 @@ def content(request):
     return render(request,'index.html')
 
 
+def Register(request):
+
+    if request.method == 'POST':
+        username = request.POST[
+            'username']  ###left username we can write anything there ,right username from form 'name' check
+
+        passw = request.POST['password']
+        cpass = request.POST['cpassword']
+        if passw == cpass:
+            if User.objects.filter(username=username).exists():
+                messages.info(request, "Username Taken")  # messageinfo shows message site in screen like printf
+                return redirect('register')
+            else:
+                user = User.objects.create_user(username=username, password=passw)
+                user.save();
+                return redirect('register') #after registration page redirect to login pg
+        #
+        # else:
+        #     messages.info(request,"password not matching")
+        #     return redirect('register')
+        # return redirect('/')
+    return render(request,'register.html')
+
 
 
 
