@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container"> <h1 style="">FORM</h1>
+    <div class="card">
+        <div class="card-header">
+             Form
+        </div>
+        <div class="card-body">
+            <form method="post" id="personform" data-course-url="{% url 'ajax_update_course' %}" class="form-horizontal" role="form">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Submit" class="btn btn-info">
+            </form>
+        </div>
+      </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    $("#id_departments").change(function () {
+        const url = $("#personform").attr("data-course-url");  // get the url of the `update_course` view
+        const departmentsId = $(this).val();  // get the selected departments ID from the HTML input
+
+        $.ajax({                       // initialize an AJAX request
+            url: url,                    // set the url of the request (= /person/ajax/update_course/ )
+            data: {
+                'departments_id': departmentsId       // GET parameters
+            },
+            success: function (data) {
+                $("#id_courses").html(data);
+            }
+        });
+
+    });
+</script>
+
+</body>
+</html>
