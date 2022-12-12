@@ -56,13 +56,14 @@ https://templatemo.com/tm-543-breezed
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="Login" class="active">Home</a></li>
-                            {% if user.is_authenticated %}
-                            <li class="scroll-to-section"><a href="#contact-us">Hello {{user.username}}</a></li>
-
-
+                            <li class="scroll-to-section"><a href="" class="active">Home</a></li>
                             <li class="scroll-to-section"><a href="Register">Register</a></li>
 
+                            {% if user.is_authenticated %}
+                            <li class="scroll-to-section"><a href="#">Hi {{user.username}}</a></li>
+                            <li class="scroll-to-section"><a href="Logout">Logout</a></li>
+
+                            {% else %}
                             <li class="scroll-to-section"><a href="Login">Login</a></li>
                             {% endif %}
                             <li class="submenu">
@@ -191,7 +192,7 @@ https://templatemo.com/tm-543-breezed
 <!--                                <a href="#" class="main-button-icon">-->
 <!--                                    Form <i class="fa fa-arrow-right"></i>-->
 <!--                                </a>-->
-                                <button type="submit" id="" class="main-button-icon"><a href="person/add/">Form</a></button>
+                                <button type="submit" id="" class="main-button-icon"><a href="Login">Login</button>
 
                             </div>
                         </div>

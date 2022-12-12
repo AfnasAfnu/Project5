@@ -5,31 +5,41 @@
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
 </head>
-<body>
-<div class="container"> <h1 style="">FORM</h1>
-    <div class="card">
+<body style=" background-image:url('https://images.pexels.com/photos/5088017/pexels-photo-5088017.jpeg?auto=compress&cs=tinysrgb&w=600');align-items:center;justify-content:center;height:100vh;display:flex;">
+<div class="container" style="width:550px;height:min-content;border-radius:12px;padding:20px;" > <h1 style=""></h1>
+<div class="card">
         <div class="card-header">
-             Form
+           <h1 style="text-align:center">FORM</h1>
         </div>
-        <div class="card-body">
-            <form method="post" id="personform" data-course-url="{% url 'ajax_update_course' %}" class="form-horizontal" role="form">
+        <div class="card-body" >
+
+            <form method="post" id="personform" data-course-url="{% url 'ajax_update_course' %}" class="form-horizontal" role="form" >
+<table >
                 {% csrf_token %}
-                {{ form.as_p }}
-                <input type="submit" value="Submit" class="btn btn-info">
+                {{ form.as_table }}
+</table>
+<button type="submit" class="btn btn-primary">Submit</button>
+
+ <a href="/" class="btn btn-info">Logout</a>
             </form>
+
+
+
         </div>
       </div>
 </div>
+
+
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
     $("#id_departments").change(function () {
-        const url = $("#personform").attr("data-course-url");  // get the url of the `update_course` view
-        const departmentsId = $(this).val();  // get the selected departments ID from the HTML input
+        const url = $("#personform").attr("data-course-url");
+        const departmentsId = $(this).val();
 
-        $.ajax({                       // initialize an AJAX request
-            url: url,                    // set the url of the request (= /person/ajax/update_course/ )
+        $.ajax({
+            url: url,
             data: {
-                'departments_id': departmentsId       // GET parameters
+                'departments_id': departmentsId
             },
             success: function (data) {
                 $("#id_courses").html(data);

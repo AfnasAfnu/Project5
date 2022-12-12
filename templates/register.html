@@ -10,7 +10,7 @@
 
 
 </head>
-<body style="background-color:#0d6efd;align-items:center;justify-content:center;height:100vh;display:flex;">
+<body style="background-image:url('https://www.athletadesk.com/wp-content/uploads/2016/08/join-background.jpg');align-items:center;justify-content:center;height:100vh;display:flex;">
 <div style="background:#ffffff;width:460px;height:min-content;border-radius:12px;padding:20px;">
 <form action="Register" method="post">
     {% csrf_token %}
@@ -27,17 +27,16 @@
 </div>
 <div class="mb-3">
 
-            <label for="Password" class="form-group">Confirm Password </label><br>
-            <input type="password" id="cpassword" name="cpassword" placeholder="Confirm your Password">
+    <label for="Password" class="form-group">Confirm Password </label><br>
+    <input type="password" id="cpassword" name="cpassword" placeholder="Confirm your Password">
 
-        </div>
-            <input class="btn btn-success" type="submit" value="REGISTER" ><br>
-
+</div>
+    <input class="btn btn-success" type="submit" value="REGISTER" ><br>
 
 </form>
     {% for msg in messages %}
-{{msg}}
-{% endfor %}
+    {{msg}}
+    {% endfor %}
 </div>
 
 </body>
